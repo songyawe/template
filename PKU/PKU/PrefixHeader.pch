@@ -1,0 +1,40 @@
+//
+//  PrefixHeader.pch
+//  PKU
+//
+//  Created by 宋亚伟 on 15/8/12.
+//  Copyright (c) 2015年 SYW. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+#import "UIWindow+Extension.h"
+
+
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+// 通知中心
+#define SYWNotificationCenter [NSNotificationCenter defaultCenter]
+
+#ifdef DEBUG // 处于开发阶段
+#define SYWLog(...) NSLog(__VA_ARGS__)
+#else // 处于发布阶段
+#define SYWLog(...)
+#endif
+
+// RGB颜色
+#define SYWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+// 随机色
+#define SYWRandomColor SYWColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+#endif
+
